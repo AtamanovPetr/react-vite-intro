@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-
+import Button from "./components/Button/Button";
 function WayToTeach() {
   return (
     <li className="list-none border rounded-md p-5 mb-5 bg-[#fafafa]">
@@ -14,6 +14,9 @@ function WayToTeach() {
 }
 
 export default function App() {
+  function handleClick() {
+    console.log("clicked");
+  }
   return (
     <div>
       <Header />
@@ -26,6 +29,13 @@ export default function App() {
             <WayToTeach />
             <WayToTeach />
           </ul>
+        </section>
+        <section>
+          <h3>Чем мы отличаемся от других</h3>
+
+          <Button onClick={handleClick}>Подход</Button>
+          <Button onClick={handleClick}>Доступность</Button>
+          <Button onClick={handleClick}>Концентрация</Button>
         </section>
       </main>
     </div>
