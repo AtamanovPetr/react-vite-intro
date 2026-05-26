@@ -1,5 +1,6 @@
 import Header from "./components/Header";
 import Button from "./components/Button/Button";
+import { useState } from "react";
 function WayToTeach() {
   return (
     <li className="list-none border rounded-md p-5 mb-5 bg-[#fafafa]">
@@ -14,8 +15,10 @@ function WayToTeach() {
 }
 
 export default function App() {
-  function handleClick() {
-    console.log("clicked");
+  const [contentType, setContentType] = useState(null);
+
+  function handleClick(type) {
+    setContentType(type);
   }
   return (
     <div>
@@ -33,9 +36,27 @@ export default function App() {
         <section>
           <h3>Чем мы отличаемся от других</h3>
 
-          <Button onClick={handleClick}>Подход</Button>
-          <Button onClick={handleClick}>Доступность</Button>
-          <Button onClick={handleClick}>Концентрация</Button>
+          <Button
+            isActive={contentType === "way"}
+            onClick={() => handleClick("way")}
+          >
+            Подход
+          </Button>
+          <Button
+            isActive={contentType === "easy"}
+            onClick={() => handleClick("easy")}
+          >
+            Доступность
+          </Button>
+          <Button
+            isActive={contentType === "programm"}
+            onClick={() => handleClick("programm")}
+          >
+            Концентрация
+          </Button>
+
+          {!contentType && <p>Нажми на кнопку</p>}
+          {contentType && <p>{contentType}</p>}
         </section>
       </main>
     </div>
